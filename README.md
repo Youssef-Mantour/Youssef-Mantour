@@ -6,7 +6,9 @@
 </p>
 ## Certifications
 
-[![My Badge]([https://www.credly.com/badges/5797f3c7-27ac-4c49-af43-82416576167f)](https://www.credly.com/badges/5797f3c7-27ac-4c49-af43-82416576167f](https://images.credly.com/size/680x680/images/3e199561-bc4a-4621-9361-340fc43d997e/Coursera_20Artificial_20Intelligence_20Essentials_20V2.png))
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Youssef-Mantour/Youssef-Mantour/main/banner.jpeg" height="200px" width="150"alt="My GitHub Banner">
+</p>
 
 <!--
 **Youssef-Mantour/Youssef-Mantour** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
