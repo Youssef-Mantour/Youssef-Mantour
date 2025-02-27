@@ -2,7 +2,7 @@
 
 <!-- ![Banner](https://raw.githubusercontent.com/Youssef-Mantour/Youssef-Mantour/main/banner.jpeg) --> 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Youssef-Mantour/Youssef-Mantour/main/banner.jpeg" height="100px" alt="My GitHub Banner">
+  <img src="https://raw.githubusercontent.com/Youssef-Mantour/Youssef-Mantour/main/banner.jpeg" height="200px" width="100%"alt="My GitHub Banner">
 </p>
 
 <!--
