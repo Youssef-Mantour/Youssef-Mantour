@@ -1,6 +1,6 @@
 ## Hi there 👋
 
-![Banner](banner.png)  <!-- This will display the banner correctly -->
+![Banner](https://raw.githubusercontent.com/Youssef-Mantour/Youssef-Mantour/main/banner.jpeg)
 
 <!--
 **Youssef-Mantour/Youssef-Mantour** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
