@@ -1,0 +1,92 @@
+
+# Step 1: Update the System
+# Update package list and upgrade installed packages
+sudo apt update -y
+sudo apt upgrade -y
+
+# Step 2: Install Node.js
+# Install Node.js using the NodeSource repository
+curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+sudo apt install -y nodejs
+
+# Step 3: Install Git (if not installed)
+# Install Git for cloning the repository
+sudo apt install git
+
+# Step 4: Clone Your Next.js Project
+# Clone the project from GitHub to your droplet
+cd /var/www
+git clone https://github.com/your-username/your-nextjs-app.git
+cd your-nextjs-app
+
+# Step 5: Install Project Dependencies
+# Install dependencies listed in the package.json file
+npm install
+
+# Step 6: Build the Next.js App for Production
+# Build the app for production
+npm run build
+
+# Step 7: Start the App in Production Mode
+# Start the app in production mode
+npm start
+
+# Step 8: Install PM2 to Keep Your App Running
+# Install PM2 process manager globally
+sudo npm install -g pm2
+# Start the app with PM2
+pm2 start npm --name "nextjs-app" -- start
+# Verify that the app is running with PM2
+pm2 list
+# Make PM2 restart automatically on system reboot
+pm2 startup
+# Save the process list for auto-restart
+pm2 save
+
+# Step 9: Configure a Reverse Proxy with Nginx
+# Install Nginx
+sudo apt install nginx
+# Create a new Nginx configuration file
+sudo nano /etc/nginx/sites-available/nextjs-app
+# Add the following configuration (replace your-droplet-ip with actual IP or domain):
+# server {
+#   listen 80;
+#   server_name your-droplet-ip;
+#   location / {
+#     proxy_pass http://localhost:3000;
+#     proxy_http_version 1.1;
+#     proxy_set_header Upgrade $http_upgrade;
+#     proxy_set_header Connection 'upgrade';
+#     proxy_set_header Host $host;
+#     proxy_cache_bypass $http_upgrade;
+#   }
+# }
+# Enable the Nginx site configuration
+sudo ln -s /etc/nginx/sites-available/nextjs-app /etc/nginx/sites-enabled/
+# Test the Nginx configuration
+sudo nginx -t
+# Restart Nginx
+sudo systemctl restart nginx
+# Allow HTTP traffic through the firewall
+sudo ufw allow 'Nginx Full'
+
+# Step 10: Set Up SSL with Let's Encrypt (Optional but Recommended)
+# Install Certbot and Nginx plugin
+sudo apt install certbot python3-certbot-nginx
+# Obtain SSL certificate using Certbot
+sudo certbot --nginx -d your-domain.com
+# Test the SSL certificate
+sudo certbot renew --dry-run
+
+# Step 11: Monitor Your App
+# View logs for the app
+pm2 logs nextjs-app
+# Monitor resource usage
+pm2 monit
+# Check the status of your app
+pm2 list
+# Restart the app if needed
+pm2 restart nextjs-app
+
+# Step 12: Set Up Backups (Optional but Recommended)
+# Backup files regularly using DigitalOcean's backup service or custom solution
